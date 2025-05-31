@@ -1,0 +1,47 @@
+# Build results
+bin/
+obj/
+build/
+
+# User-specific files
+*.user
+*.rsuser
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Rider project files
+.idea/
+
+# VS Code
+.vscode/
+
+# Dotnet-specific
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+# Nuke
+.nuke/
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Publish output (optional, bisa di-include jika kamu butuh push binary hasil publish)
+*.exe
+*.dll
+*.pdb
+*.app
+*.out
+
+# Paket NuGet (restore otomatis)
+packages/
+*.nupkg
+*.snupkg

@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+
+    <!-- Tambahan untuk native executable -->
+    <RuntimeIdentifier>osx-x64</RuntimeIdentifier>
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <PublishTrimmed>false</PublishTrimmed> <!-- true bisa lebih kecil tapi rawan potong lib -->
+    <InvariantGlobalization>true</InvariantGlobalization> <!-- opsional: kecilkan size -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MPXJ.NET" Version="14.0.0" />
+  </ItemGroup>
+
+</Project>
