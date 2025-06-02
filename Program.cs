@@ -51,11 +51,28 @@ class Program
                 .Where(t => t != null)
                 .ToList();
 
+            var totalManDaysPerResource = tasks
+                .GroupBy(t => t.AssignedTo)
+                .ToDictionary(
+                    g => g.Key,
+                    g => g.Sum(t => int.TryParse(t.DurationInDays, out var d) ? d : 0)
+                );
+
+            var totalManDayAll = totalManDaysPerResource.Values.Sum();
+
+            var totalManDaysList = totalManDaysPerResource
+                .Select(kvp => new { email = kvp.Key, TotalManDays = kvp.Value })
+                .ToList();
+
             var response = new
             {
                 FileName = Path.GetFileName(mppFile),
                 ProjectName = projectFile.ProjectProperties?.ProjectTitle,
-                Tasks = tasks!
+                ProjectStart = projectFile.ProjectProperties?.StartDate?.ToString("yyyy-MM-dd") ?? string.Empty,
+                ProjectFinish = projectFile.ProjectProperties?.FinishDate?.ToString("yyyy-MM-dd") ?? string.Empty,
+                Tasks = tasks!,
+                TotalManDaysPerResource = totalManDaysList,
+                TotalManDayAll = totalManDayAll
             };
             var options = new System.Text.Json.JsonSerializerOptions
             {
