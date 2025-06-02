@@ -40,12 +40,13 @@ class Program
                     return new
                     {
                         Name = t.Name,
-                        Start = t.Start?.ToString("yyyy-MM-dd HH:mm") ?? string.Empty,
-                        Finish = t.Finish?.ToString("yyyy-MM-dd HH:mm") ?? string.Empty,
+                        Start = t.Start?.ToString("yyyy-MM-ddTHH:mm:ss:msZ") ?? string.Empty,
+                        Finish = t.Finish?.ToString("yyyy-MM-ddTHH:mm:ss:msZ") ?? string.Empty,
                         AssignedTo = assignedTo,
                         AssignedBy = t.OutlineLevel == 1 ? "Project Manager" : "Supervisor",
                         DurationInDays = duration.ToString()
                     };
+
                 })
                 .Where(t => t != null)
                 .ToList();
@@ -62,7 +63,7 @@ class Program
                 Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping
             };
 
-            Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(tasks, options));
+            Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(response, options));
 
            
         }
